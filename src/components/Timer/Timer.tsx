@@ -3,36 +3,87 @@ import './Timer.css'
 
 import TimerButton from '../TimerButton/TimerButton'
 
+
 class Timer extends Component {
   constructor(props: any) {
-    super(props);
-    this.state = {
-      minutes: 25,
-      seconds: 0,
- 	      isOn: false
-    };
+    super(props);     
   }
 
-  startTimer() {
-    console.log('Starting timer.');
+  state: {
+    time: number,
+    start: number,
+    isOn: boolean,
+    timer: any    
+ }= {
+      time: 0,
+      start: 0,
+      isOn: false,
+      timer: ''
+    }
+
+  startTimer = () =>  {
+    this.setState({
+      isOn: true,
+      time: this.state.time,
+      start: Date.now() - this.state.time,
+    })    
+
+    this.state.timer = setInterval(() => this.setState({
+      time: Date.now() - this.state.start
+    }), 1000)
+
+    console.log('Starting timer. ', this.state);
+    
   }
 
-  stopTimer() {
-    console.log('Stopping timer.');
+  stopTimer = () => {
+    this.setState({ isOn: false });
+    clearInterval(this.state.timer);
+    
+    console.log('Stopping timer...');    
   }
 
- resetTimer() {
-    console.log('Resetting timer.');
+  resetTimer = () => {
+    this.setState({ time: 0 });
+    
+    console.log('Resetting timer...', this.state);    
   }
 
   render = () => {
-    return(
-      <div className="timer-container">    
-        <TimerButton buttonAction={this.startTimer} buttonValue={'Start'} />
-        <TimerButton buttonAction={this.stopTimer} buttonValue={'Stop'} />
-        <TimerButton buttonAction={this.resetTimer} buttonValue={'Reset'} />                
+    let start = (this.state.time === 0) ? 
+    
+    <TimerButton buttonAction={this.startTimer} buttonValue={'Start'} />
+    : null
+
+    let stop = (this.state.isOn) ?
+
+    <TimerButton buttonAction={this.stopTimer} buttonValue={'Stop'} />
+    : null
+
+    let reset = (this.state.time !== 0 && !this.state.isOn) ? 
+
+    <TimerButton buttonAction={this.resetTimer} buttonValue={'Reset'} />
+    : null
+
+    let resume = (this.state.time !== 0 && !this.state.isOn) ?
+
+    <TimerButton buttonAction={this.startTimer} buttonValue={'Resume'} />
+    : null
+
+    return (
+      <div className="timer-container">
+        <div className="time-display">
+          <h3> Start: { Math.round(this.state.time/1000) } </h3>
+        </div>
+        <div className="timer-button-container">
+          {start}
+          {resume}
+          {stop}
+          {reset}
+        </div>
       </div>
-    );
+    )
+
   };
 }
 
