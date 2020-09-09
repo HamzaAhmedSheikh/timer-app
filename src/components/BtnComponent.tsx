@@ -4,7 +4,7 @@ function BtnComponent(props:{status:number,resume: any, reset: any, stop: any, s
     return (
       <div>
         {(props.status === 0) ? 
-          <button className="stopwatch-btn stopwatch-btn-gre"
+          <button id="start" className="stopwatch-btn stopwatch-btn-gre"
           onClick={props.start}>Start</button> : ""
         } 
 
