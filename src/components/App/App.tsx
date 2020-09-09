@@ -8,15 +8,16 @@ import DisplayComponent from '../DisplayComponent';
 
  function App() {
 
-   const [time, setTime] = useState({ms: 0, s:0, m:0, h:0});
-   const [interval, setInterval] = useState();
+   const [time, setTime] = useState({ms:0, s:0, m:0, h:0});
+   const [interv, setInterv] = useState();
    const [status, setStatus] = useState(0);
 
    const start = () => {
-     run();
-     setStatus(1);
-     const myInterval:any = setInterval(run, 10);
-     setInterval(myInterval);
+    run();
+    setStatus(1);
+    const myinterval:any=setInterval(run, 10);
+    setInterv(myinterval);
+     
    }
 
    let updateMs = time.ms, updateS = time.s, updateM = time.m, updateH = time.h;
@@ -44,12 +45,12 @@ import DisplayComponent from '../DisplayComponent';
    };
 
    const stop = () => {
-     clearInterval(interval);
+     clearInterval(interv);
      setStatus(2);
    }
 
    const reset = () => {
-     clearInterval(interval);
+     clearInterval(interv);
      setStatus(0);
      setTime({ ms: 0, s:0, m:0, h:0 })
    };
