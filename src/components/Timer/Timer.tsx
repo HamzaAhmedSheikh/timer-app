@@ -23,7 +23,11 @@ class Timer extends Component {
   }
 
   render = () => {
-    return <div className="timer-container" />;
+    return(
+      <div className="timer-container">
+         Timer
+      </div>
+    );
   };
 }
 
