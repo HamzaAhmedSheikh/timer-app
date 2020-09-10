@@ -62,7 +62,7 @@ import DisplayComponent from '../DisplayComponent';
        <p> React Timer </p>
        <div className="clock-holder">
          <div className="stopwatch">
-           <DisplayComponent time={time}/>
+           <DisplayComponent time={time} />
            <BtnComponent status={status} resume={resume} reset={reset} stop={stop} start={start}/>
          </div>
        </div>
