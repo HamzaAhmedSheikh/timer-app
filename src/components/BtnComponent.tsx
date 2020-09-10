@@ -1,6 +1,7 @@
 import React from 'react';
 
 function BtnComponent(props:{status:number,resume: any, reset: any, stop: any, start:any }) {
+        
     return (
       <div>
         {(props.status === 0) ? 

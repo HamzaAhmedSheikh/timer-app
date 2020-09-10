@@ -1,9 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { mount, ReactWrapper } from "enzyme";
 import App from './App';
-import Timer from '../Timer/Timer'
-import BtnComponent from '../BtnComponent';
+
 
 
 describe('App Component renders', () => {     
