@@ -6,7 +6,7 @@ import DisplayComponent from '../DisplayComponent';
 
  // Not Started = 0
  // Started = 1
- // Stopped = 2
+ // Pause = 2 
 
  function App() {
 
