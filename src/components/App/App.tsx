@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import './App.css';
-// import Timer from '../Timer/Timer'
-
 import BtnComponent from '../BtnComponent';
 import DisplayComponent from '../DisplayComponent';
 
+
+ // Not Started = 0
+ // Started = 1
+ // Stopped = 2
 
  function App() {
 
